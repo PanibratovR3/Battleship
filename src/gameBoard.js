@@ -18,6 +18,7 @@ class GameBoard {
       new Ship(3),
     ];
   }
+
   placeShip(i, j, ship, direction) {
     let length = ship.length;
     const cellsToPlace = [];
@@ -76,6 +77,10 @@ class GameBoard {
       }
       return false;
     }
+  }
+
+  areAllShipsSunk() {
+    return this.ships.length === 0;
   }
 }
 
