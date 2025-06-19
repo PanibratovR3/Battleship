@@ -50,7 +50,28 @@ class GameBoard {
         for (let iStep = i; iStep > i - length; iStep--) {
           this.board[iStep][j] = `${ship.id},${length}`;
         }
-        console.log(this.board);
+        return true;
+      }
+      return false;
+    }
+  }
+
+  receiveAttack(i, j) {
+    let gameBoardCell = this.board[i][j];
+    if (gameBoardCell === "-") {
+      this.board[i][j] = "miss";
+      return true;
+    } else {
+      const shipInfo = gameBoardCell.split(",");
+      if (shipInfo.length === 2) {
+        const shipID = shipInfo[0];
+        const shipIndex = this.ships.findIndex((ship) => ship.id === shipID);
+        this.ships[shipIndex].hit();
+        const isShipSunken = this.ships[shipIndex].isSunk();
+        if (isShipSunken) {
+          this.ships.splice(shipIndex, 1);
+        }
+        this.board[i][j] += ",hit";
         return true;
       }
       return false;
