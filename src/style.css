@@ -52,3 +52,21 @@
 .ship-3 {
     background-color: mediumseagreen;
 }
+
+.control {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+}
+
+.label {
+    font-size: 2.5rem;
+    font-style: oblique;
+}
+
+.orientation-placement {
+    padding: 15px;
+    background-color: lightskyblue;
+    border-radius: 5px;
+    font-size: 1.3rem;
+}
