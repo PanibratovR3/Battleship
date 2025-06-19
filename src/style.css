@@ -27,4 +27,28 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 50px;
+}
+
+.board-row {
+    display: flex;
+}
+
+.board-cell {
+    background-color: lightgray;
+    border: 2px solid black;
+    min-width: 4vw;
+    min-height: 4vw;
+}
+
+.ship-5 {
+    background-color: mediumpurple;
+}
+
+.ship-4 {
+    background-color: tan;
+}
+
+.ship-3 {
+    background-color: mediumseagreen;
 }
