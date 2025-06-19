@@ -1,0 +1,30 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.header {
+    text-align: center;
+    font-weight: bold;
+    font-size: 5rem;
+    padding: 10vh 0;
+}
+
+.main-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.player-header {
+    text-align: center;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 3.5rem;
+}
+
+.board-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
