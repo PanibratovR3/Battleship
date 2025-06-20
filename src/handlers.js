@@ -13,4 +13,15 @@ function handleHumanEmptyBoardCell(event, player, ships) {
   }
 }
 
-export { handleHumanEmptyBoardCell };
+function buttonHandler(event, orientation) {
+  let currentOrientation = event.target.textContent.split(" ")[0].toLowerCase();
+  console.log(currentOrientation);
+  orientation = currentOrientation === "horizontal" ? "vertical" : "horizontal";
+  const arrow = orientation === "vertical" ? "&#8593;" : "&#8594;";
+  event.target.innerHTML = `${
+    orientation.charAt(0).toUpperCase() + orientation.slice(1)
+  } ${arrow}`;
+  console.log(orientation);
+}
+
+export { handleHumanEmptyBoardCell, buttonHandler };

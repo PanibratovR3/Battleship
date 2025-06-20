@@ -1,4 +1,4 @@
-import { handleHumanEmptyBoardCell } from "./handlers.js";
+import { handleHumanEmptyBoardCell, buttonHandler } from "./handlers.js";
 
 const DOMBattleship = (() => {
   const primaryDraw = () => {
@@ -16,6 +16,7 @@ const DOMBattleship = (() => {
     const orientationButton = document.createElement("button");
     orientationButton.className = "orientation-placement";
     orientationButton.innerHTML = "Horizontal &#8594;";
+    orientationButton.addEventListener("click", buttonHandler);
     control.appendChild(orientationButton);
     document.body.appendChild(control);
 
