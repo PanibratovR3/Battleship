@@ -1,6 +1,7 @@
-import { handleHumanEmptyBoardCell, buttonHandler } from "./handlers.js";
+import { handleHumanEmptyBoardCell } from "./handlers.js";
 
 const DOMBattleship = (() => {
+  let humanOrientation;
   const primaryDraw = () => {
     const header = document.createElement("div");
     header.className = "header";
@@ -16,7 +17,19 @@ const DOMBattleship = (() => {
     const orientationButton = document.createElement("button");
     orientationButton.className = "orientation-placement";
     orientationButton.innerHTML = "Horizontal &#8594;";
-    orientationButton.addEventListener("click", buttonHandler);
+    humanOrientation = "horizontal";
+    orientationButton.addEventListener("click", (event) => {
+      let currentOrientation = event.target.textContent
+        .split(" ")[0]
+        .toLowerCase();
+      currentOrientation =
+        currentOrientation === "horizontal" ? "vertical" : "horizontal";
+      humanOrientation = currentOrientation;
+      const arrow = currentOrientation === "vertical" ? "&#8593;" : "&#8594;";
+      event.target.innerHTML = `${
+        currentOrientation.charAt(0).toUpperCase() + currentOrientation.slice(1)
+      } ${arrow}`;
+    });
     control.appendChild(orientationButton);
     document.body.appendChild(control);
 
@@ -88,12 +101,22 @@ const DOMBattleship = (() => {
         } else {
           if (isHuman) {
             if (ships && ships.length > 1) {
-              boardCell.addEventListener("click", (event) =>
-                handleHumanEmptyBoardCell(event, player, ships)
-              );
+              boardCell.addEventListener("click", (event) => {
+                handleHumanEmptyBoardCell(
+                  event,
+                  player,
+                  ships,
+                  humanOrientation
+                );
+              });
             } else {
               boardCell.removeEventListener("click", (event) =>
-                handleHumanEmptyBoardCell(event, player, ships)
+                handleHumanEmptyBoardCell(
+                  event,
+                  player,
+                  ships,
+                  humanOrientation
+                )
               );
             }
           }
