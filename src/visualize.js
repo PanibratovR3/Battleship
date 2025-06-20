@@ -1,3 +1,5 @@
+import { handleHumanEmptyBoardCell } from "./handlers.js";
+
 const DOMBattleship = (() => {
   const primaryDraw = () => {
     const header = document.createElement("div");
@@ -52,7 +54,7 @@ const DOMBattleship = (() => {
     computerBoardContainer.appendChild(computerBoard);
   };
 
-  const drawBoard = (boardID, player) => {
+  const drawBoard = (boardID, player, ships = null) => {
     const board = document.querySelector(boardID);
     const isHuman = player.isHuman;
     const playerBoard = player.board.board;
@@ -70,6 +72,31 @@ const DOMBattleship = (() => {
         boardCell.className = "board-cell";
         boardCell.setAttribute("data-row", i);
         boardCell.setAttribute("data-column", j);
+        if (playerBoard[i][j] !== "-") {
+          if (playerBoard[j][j] !== "miss") {
+            const cellData = playerBoard[i][j].split(",");
+            boardCell.setAttribute("data-ship-id", cellData[0]);
+            boardCell.classList.add("ship");
+            boardCell.classList.add(`s-${cellData[1]}`);
+            if (cellData[2]) {
+              boardCell.textContent = "X";
+            }
+          } else {
+            boardCell.innerHTML = "&#8226;";
+          }
+        } else {
+          if (isHuman) {
+            if (ships && ships.length > 1) {
+              boardCell.addEventListener("click", (event) =>
+                handleHumanEmptyBoardCell(event, player, ships)
+              );
+            } else {
+              boardCell.removeEventListener("click", (event) =>
+                handleHumanEmptyBoardCell(event, player, ships)
+              );
+            }
+          }
+        }
         boardRow.appendChild(boardCell);
       }
       board.appendChild(boardRow);
