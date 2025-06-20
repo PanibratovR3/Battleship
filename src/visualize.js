@@ -52,7 +52,30 @@ const DOMBattleship = (() => {
     computerBoardContainer.appendChild(computerBoard);
   };
 
-  return { primaryDraw };
+  const drawBoard = (boardID, player) => {
+    const board = document.querySelector(boardID);
+    const isHuman = player.isHuman;
+    const playerBoard = player.board.board;
+    if (board.hasChildNodes()) {
+      while (board.firstChild) {
+        const element = board.firstChild;
+        board.removeChild(element);
+      }
+    }
+    for (let i = 0; i < playerBoard.length; i++) {
+      const boardRow = document.createElement("div");
+      boardRow.className = "board-row";
+      for (let j = 0; j < playerBoard[i].length; j++) {
+        const boardCell = document.createElement("div");
+        boardCell.className = "board-cell";
+        boardCell.setAttribute("data-row", i);
+        boardCell.setAttribute("data-column", j);
+        boardRow.appendChild(boardCell);
+      }
+      board.appendChild(boardRow);
+    }
+  };
+  return { primaryDraw, drawBoard };
 })();
 
 export { DOMBattleship };
