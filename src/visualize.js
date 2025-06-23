@@ -112,6 +112,7 @@ const DOMBattleship = (() => {
               document.querySelector(".info").textContent = `Placing the Ship-${
                 ships[ships.length - 2].length
               }.`;
+              boardCell.classList.add("active");
               boardCell.addEventListener("click", (event) => {
                 handleHumanEmptyBoardCell(
                   event,
@@ -122,6 +123,7 @@ const DOMBattleship = (() => {
               });
             } else {
               document.querySelector(".info").textContent = "Start!";
+              boardCell.classList.remove("active");
               boardCell.removeEventListener("click", (event) =>
                 handleHumanEmptyBoardCell(
                   event,
