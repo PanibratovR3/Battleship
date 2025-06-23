@@ -88,3 +88,27 @@
     font-size: 1.9rem;
     padding: 15px 0;
 }
+
+.options {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 0;
+}
+
+.random {
+    background-color: firebrick;
+    color: white;
+    padding: 20px 5px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.restart {
+    background-color: cyan;
+    padding: 20px 5px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 1.3rem;
+}

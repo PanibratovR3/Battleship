@@ -13,8 +13,18 @@ const DOMBattleship = (() => {
     document.body.appendChild(errorField);
     const infoField = document.createElement("div");
     infoField.className = "info";
-    // infoField.textContent = "Info";
     document.body.appendChild(infoField);
+    const optionsContainer = document.createElement("div");
+    optionsContainer.className = "options";
+    const randomPlacementButton = document.createElement("button");
+    randomPlacementButton.textContent = "Place ships randomly";
+    randomPlacementButton.className = "random";
+    optionsContainer.appendChild(randomPlacementButton);
+    const restartButton = document.createElement("button");
+    restartButton.innerHTML = "Restart &#8634;";
+    restartButton.className = "restart";
+    optionsContainer.appendChild(restartButton);
+    document.body.appendChild(optionsContainer);
     const control = document.createElement("div");
     control.className = "control";
     const label = document.createElement("div");
@@ -153,7 +163,35 @@ const DOMBattleship = (() => {
       }
     }
   };
-  return { primaryDraw, drawBoard, updateCell };
+
+  const drawBoardRandom = (boardID, board) => {
+    const boardField = document.querySelector(boardID);
+    if (boardField.hasChildNodes()) {
+      while (boardField.firstChild) {
+        const element = boardField.firstChild;
+        boardField.removeChild(element);
+      }
+    }
+    for (let i = 0; i < board.length; i++) {
+      const boardRow = document.createElement("div");
+      boardRow.className = "board-row";
+      for (let j = 0; j < board.length; j++) {
+        const boardCell = document.createElement("div");
+        boardCell.className = "board-cell";
+        boardCell.setAttribute("data-row", i);
+        boardCell.setAttribute("data-column", j);
+        if (board[i][j] !== "-") {
+          const cellData = board[i][j].split(",");
+          boardCell.setAttribute("data-ship-id", cellData[0]);
+          boardCell.classList.add("ship");
+          boardCell.classList.add(`s-${cellData[1]}`);
+        }
+        boardRow.appendChild(boardCell);
+      }
+      boardField.appendChild(boardRow);
+    }
+  };
+  return { primaryDraw, drawBoard, updateCell, drawBoardRandom };
 })();
 
 export { DOMBattleship };

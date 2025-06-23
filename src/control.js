@@ -36,15 +36,15 @@ const Control = (() => {
         humanRow,
         humanColumn
       );
+      if (firstAttackSuccessFlag && hitShipFlag) {
+        successFullTurn = true;
+      }
       DOMBattleship.updateCell(
         "#human-board .board-cell",
         humanRow,
         humanColumn,
         humanPlayer
       );
-      if (firstAttackSuccessFlag && hitShipFlag) {
-        successFullTurn = true;
-      }
     } while (!firstAttackSuccessFlag);
     while (successFullTurn) {
       humanRow = random(0, humanPlayer.board.boardSize);
