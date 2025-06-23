@@ -137,7 +137,23 @@ const DOMBattleship = (() => {
       board.appendChild(boardRow);
     }
   };
-  return { primaryDraw, drawBoard };
+
+  const updateCell = (boardSelector, row, column, player) => {
+    const cell = document.querySelector(
+      `${boardSelector}[data-row='${row}'][data-column='${column}']`
+    );
+    const cellData = player.board.board[row][column];
+    if (cellData === "miss") {
+      cell.innerHTML = "&#8226;";
+    } else {
+      cell.textContent = "X";
+      if (!player.isHuman) {
+        const cellDataArray = cellData.split(",");
+        cell.classList.add(`s-${cellDataArray[1]}`);
+      }
+    }
+  };
+  return { primaryDraw, drawBoard, updateCell };
 })();
 
 export { DOMBattleship };
