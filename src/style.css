@@ -11,6 +11,10 @@
     padding: 10vh 0;
 }
 
+body {
+    background-color: darkcyan;
+}
+
 .main-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -91,7 +95,7 @@
 
 .info {
     text-align: center;
-    color: saddlebrown;
+    color: #ff8731;
     font-size: 1.9rem;
     padding: 15px 0;
 }
