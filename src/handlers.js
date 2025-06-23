@@ -6,10 +6,12 @@ function handleHumanEmptyBoardCell(event, player, ships, direction) {
   const ship = ships[ships.length - 1];
   const placementStatus = player.board.placeShip(i, j, ship, direction);
   if (placementStatus) {
+    document.querySelector(".error").textContent = "";
     DOMBattleship.drawBoard("#human-board", player, ships);
     ships.length = ships.length - 1;
   } else {
-    console.log("Error!");
+    document.querySelector(".error").textContent =
+      "Error! Cannot place this ship here.";
   }
 }
 

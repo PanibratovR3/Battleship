@@ -8,6 +8,13 @@ const DOMBattleship = (() => {
     header.textContent = "Battleship";
     document.body.appendChild(header);
 
+    const errorField = document.createElement("div");
+    errorField.className = "error";
+    document.body.appendChild(errorField);
+    const infoField = document.createElement("div");
+    infoField.className = "info";
+    // infoField.textContent = "Info";
+    document.body.appendChild(infoField);
     const control = document.createElement("div");
     control.className = "control";
     const label = document.createElement("div");
@@ -101,6 +108,9 @@ const DOMBattleship = (() => {
         } else {
           if (isHuman) {
             if (ships && ships.length > 1) {
+              document.querySelector(".info").textContent = `Placing the Ship-${
+                ships[ships.length - 2].length
+              }.`;
               boardCell.addEventListener("click", (event) => {
                 handleHumanEmptyBoardCell(
                   event,
@@ -110,6 +120,7 @@ const DOMBattleship = (() => {
                 );
               });
             } else {
+              document.querySelector(".info").textContent = "Start!";
               boardCell.removeEventListener("click", (event) =>
                 handleHumanEmptyBoardCell(
                   event,

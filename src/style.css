@@ -74,3 +74,17 @@
     border-radius: 5px;
     font-size: 1.3rem;
 }
+
+.error {
+    text-align: center;
+    color: darkred;
+    font-size: 1.9rem;
+    padding: 15px 0;
+}
+
+.info {
+    text-align: center;
+    color: saddlebrown;
+    font-size: 1.9rem;
+    padding: 15px 0;
+}
