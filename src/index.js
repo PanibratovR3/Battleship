@@ -124,9 +124,11 @@ computerCells.forEach((cell) => {
         event,
         computerPlayer
       );
+      console.log("Human ships: ", humanPlayer.board.ships);
 
       if (isTargetCellEmpty) {
         Control.playComputerRound(humanPlayer);
+        console.log("Computer ships: ", computerPlayer.board.ships);
       }
     } else if (humanShipsToPlace.length > 0) {
       document.querySelector(".error").textContent =

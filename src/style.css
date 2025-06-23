@@ -57,6 +57,13 @@
     background-color: mediumseagreen;
 }
 
+.s-2 {
+    background-color: tomato;
+}
+
+.s-1 {
+    background-color: khaki;
+}
 .control {
     display: flex;
     justify-content: center;

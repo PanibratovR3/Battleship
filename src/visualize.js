@@ -104,17 +104,8 @@ const DOMBattleship = (() => {
         boardCell.setAttribute("data-row", i);
         boardCell.setAttribute("data-column", j);
         if (playerBoard[i][j] !== "-") {
-          if (playerBoard[j][j] !== "miss") {
-            const cellData = playerBoard[i][j].split(",");
-            boardCell.setAttribute("data-ship-id", cellData[0]);
-            boardCell.classList.add("ship");
-            boardCell.classList.add(`s-${cellData[1]}`);
-            if (cellData[2]) {
-              boardCell.textContent = "X";
-            }
-          } else {
-            boardCell.innerHTML = "&#8226;";
-          }
+          const cellData = playerBoard[i][j].split(",");
+          boardCell.classList.add(`s-${cellData[1]}`);
         } else {
           if (isHuman) {
             if (ships && ships.length > 1) {
@@ -182,8 +173,6 @@ const DOMBattleship = (() => {
         boardCell.setAttribute("data-column", j);
         if (board[i][j] !== "-") {
           const cellData = board[i][j].split(",");
-          boardCell.setAttribute("data-ship-id", cellData[0]);
-          boardCell.classList.add("ship");
           boardCell.classList.add(`s-${cellData[1]}`);
         }
         boardRow.appendChild(boardCell);

@@ -16,6 +16,10 @@ class GameBoard {
       new Ship(4),
       new Ship(3),
       new Ship(3),
+      new Ship(2),
+      new Ship(2),
+      new Ship(1),
+      new Ship(1),
     ];
   }
 
@@ -68,10 +72,7 @@ class GameBoard {
         const shipID = shipInfo[0];
         const shipIndex = this.ships.findIndex((ship) => ship.id === shipID);
         this.ships[shipIndex].hit();
-        const isShipSunken = this.ships[shipIndex].isSunk();
-        if (isShipSunken) {
-          this.ships.splice(shipIndex, 1);
-        }
+        this.ships = this.ships.filter((ship) => !ship.isSunk());
         this.board[i][j] += ",hit";
         return true;
       }
