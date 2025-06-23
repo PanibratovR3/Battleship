@@ -90,6 +90,7 @@ restartButton.addEventListener("click", () => {
         !computerPlayer.board.areAllShipsSunk()
       ) {
         document.querySelector(".error").textContent = "";
+        document.querySelector(".info").textContent = "";
         const { isTargetCellEmpty } = Control.playHumanRound(
           event,
           computerPlayer
@@ -120,6 +121,7 @@ computerCells.forEach((cell) => {
       !computerPlayer.board.areAllShipsSunk()
     ) {
       document.querySelector(".error").textContent = "";
+      document.querySelector(".info").textContent = "";
       const { isTargetCellEmpty } = Control.playHumanRound(
         event,
         computerPlayer
