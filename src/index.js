@@ -40,6 +40,7 @@ computerCells.forEach((cell) => {
       !humanPlayer.board.areAllShipsSunk() &&
       !computerPlayer.board.areAllShipsSunk()
     ) {
+      document.querySelector(".error").textContent = "";
       const { isTargetCellEmpty } = Control.playHumanRound(
         event,
         computerPlayer
