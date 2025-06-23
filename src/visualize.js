@@ -1,4 +1,5 @@
 import { handleHumanEmptyBoardCell } from "./handlers.js";
+import "./style.css";
 
 const DOMBattleship = (() => {
   let humanOrientation;
