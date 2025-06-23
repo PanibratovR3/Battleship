@@ -44,12 +44,16 @@ computerCells.forEach((cell) => {
         event,
         computerPlayer
       );
-      console.log(isTargetCellEmpty);
+
+      if (isTargetCellEmpty) {
+        Control.playComputerRound(humanPlayer);
+      }
     } else if (humanShipsToPlace.length > 0) {
       document.querySelector(".error").textContent =
         "You must place all your ships";
-    } else {
-      console.log("Not yet.");
+    } else if (event.target.textContent !== "") {
+      document.querySelector(".error").textContent =
+        "This field was already attacked.";
     }
   });
 });
