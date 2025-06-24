@@ -11,7 +11,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      watchfile: "./src/template.html",
+      template: "./src/template.html",
     }),
   ],
   module: {
